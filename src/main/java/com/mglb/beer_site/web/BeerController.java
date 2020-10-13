@@ -3,6 +3,7 @@ package com.mglb.beer_site.web;
 import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.repository.BeerRepo;
 import com.mglb.beer_site.service.BeerService;
+import com.mglb.beer_site.service.ErrorMapValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,13 @@ public class BeerController {
 
     private BeerRepo beerRepo;
     private BeerService beerService;
-
+    private ErrorMapValidationService errorMapValidationService;
 
     @Autowired
-    public BeerController(BeerRepo beerRepo, BeerService beerService) {
+    public BeerController(BeerRepo beerRepo, BeerService beerService, ErrorMapValidationService errorMapValidationService) {
         this.beerRepo = beerRepo;
         this.beerService = beerService;
+        this.errorMapValidationService = errorMapValidationService;
     }
 
 
@@ -33,7 +35,8 @@ public class BeerController {
     @PostMapping("/addBeer")
     public ResponseEntity<?> addOrUpdateBeer(@Valid @RequestBody Beer beer, BindingResult result) {
 
-
+        ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
+        if(errorMap != null) return errorMap;
 
         beerService.addOrUpdateBeer(beer);
         return new ResponseEntity<Beer>(beer, HttpStatus.CREATED);
