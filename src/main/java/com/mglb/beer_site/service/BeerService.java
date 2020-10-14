@@ -1,5 +1,6 @@
 package com.mglb.beer_site.service;
 
+import com.mglb.beer_site.exceptions.BeerIdException;
 import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.model.BeerStyleEnum;
 import com.mglb.beer_site.repository.BeerRepo;
@@ -18,6 +19,7 @@ public class BeerService {
     private BeerRepo beerRepo;
 
     public Beer addOrUpdateBeer(Beer beer){
+
         return beerRepo.save(beer);
     }
 
@@ -26,12 +28,20 @@ public class BeerService {
     }
 
     public Beer findById(Long id){
-        Beer beer = beerRepo.findById(id).get();
+        try {
+            Beer beer = beerRepo.findById(id).get();
+        } catch (Exception ex){
+            throw new BeerIdException("Beer with ID " + id + " doesn't exist!");
+        }
         return beerRepo.findById(id).get();
     }
 
     public void deleteBeer(Long id){
+        try {
         beerRepo.deleteById(id);
+        } catch (Exception ex){
+            throw new BeerIdException("Beer with ID " + id + " doesn't exist!");
+        }
     }
 
 

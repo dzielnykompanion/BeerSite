@@ -44,7 +44,7 @@ public class BeerController {
 
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
-        List<Beer> beers = beerRepo.findAll();
+        List<Beer> beers = beerService.getAll();
         return new ResponseEntity<List<Beer>>(beers, HttpStatus.OK);
     }
 
@@ -57,6 +57,6 @@ public class BeerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBeer(@PathVariable Long id) {
         beerService.deleteBeer(id);
-        return new ResponseEntity<String>("Beer with id " + id + " has been deleted.", HttpStatus.OK);
+        return new ResponseEntity<String>("Beer with ID " + id + " has been deleted.", HttpStatus.OK);
     }
 }
