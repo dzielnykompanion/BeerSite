@@ -22,7 +22,16 @@ public class Beer {
     @NotNull
     private BeerStyleEnum mainStyle;
 
+    private int batchVolume;
+    private double alcohol;
+    private int biterness;
+
+    private Recipe recipe;
+
+    private String description;
     private String comments;
+
+
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(updatable = false)
@@ -35,9 +44,14 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(@NotBlank(message = "Name of your beer cannot be blank") @Size(max = 50, message = "Please use max 50 characters") String name, @NotNull BeerStyleEnum mainStyle, String comments, Date created_At, Date updated_At) {
+    public Beer(@NotBlank(message = "Name of your beer cannot be blank") @Size(max = 50, message = "Please use max 50 characters") String name, @NotNull BeerStyleEnum mainStyle, int batchVolume, double alcohol, int biterness, Recipe recipe, String description, String comments, Date created_At, Date updated_At) {
         this.name = name;
         this.mainStyle = mainStyle;
+        this.batchVolume = batchVolume;
+        this.alcohol = alcohol;
+        this.biterness = biterness;
+        this.recipe = recipe;
+        this.description = description;
         this.comments = comments;
         this.created_At = created_At;
         this.updated_At = updated_At;
@@ -89,6 +103,46 @@ public class Beer {
 
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
+    }
+
+    public int getBatchVolume() {
+        return batchVolume;
+    }
+
+    public void setBatchVolume(int batchVolume) {
+        this.batchVolume = batchVolume;
+    }
+
+    public double getAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(double alcohol) {
+        this.alcohol = alcohol;
+    }
+
+    public int getBiterness() {
+        return biterness;
+    }
+
+    public void setBiterness(int biterness) {
+        this.biterness = biterness;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
