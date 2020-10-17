@@ -1,6 +1,7 @@
 package com.mglb.beer_site.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mglb.beer_site.model.recipe.Recipe;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,13 +22,11 @@ public class Beer {
 
     @NotNull
     private BeerStyleEnum mainStyle;
-
+    private String detailedStyle;
     private int batchVolume;
     private double alcohol;
     private int biterness;
-
     private Recipe recipe;
-
     private String description;
     private String comments;
 
@@ -44,9 +43,10 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(@NotBlank(message = "Name of your beer cannot be blank") @Size(max = 50, message = "Please use max 50 characters") String name, @NotNull BeerStyleEnum mainStyle, int batchVolume, double alcohol, int biterness, Recipe recipe, String description, String comments, Date created_At, Date updated_At) {
+    public Beer(@NotBlank(message = "Name of your beer cannot be blank") @Size(max = 50, message = "Please use max 50 characters") String name, @NotNull BeerStyleEnum mainStyle, String detailedStyle, int batchVolume, double alcohol, int biterness, Recipe recipe, String description, String comments, Date created_At, Date updated_At) {
         this.name = name;
         this.mainStyle = mainStyle;
+        this.detailedStyle = detailedStyle;
         this.batchVolume = batchVolume;
         this.alcohol = alcohol;
         this.biterness = biterness;
@@ -79,6 +79,14 @@ public class Beer {
 
     public void setMainStyle(BeerStyleEnum mainStyle) {
         this.mainStyle = mainStyle;
+    }
+
+    public String getDetailedStyle() {
+        return detailedStyle;
+    }
+
+    public void setDetailedStyle(String detailedStyle) {
+        this.detailedStyle = detailedStyle;
     }
 
     public String getComments() {
