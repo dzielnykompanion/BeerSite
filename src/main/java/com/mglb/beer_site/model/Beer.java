@@ -26,9 +26,12 @@ public class Beer {
     private int batchVolume;
     private double alcohol;
     private int biterness;
-    private Recipe recipe;
     private String description;
     private String comments;
+
+    // one to one with recipe
+    private Recipe recipe;
+
 
 
 
@@ -159,7 +162,13 @@ public class Beer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", mainStyle=" + mainStyle +
+                ", detailedStyle='" + detailedStyle + '\'' +
+                ", batchVolume=" + batchVolume +
+                ", alcohol=" + alcohol +
+                ", biterness=" + biterness +
+                ", description='" + description + '\'' +
                 ", comments='" + comments + '\'' +
+                ", recipe=" + recipe +
                 ", created_At=" + created_At +
                 ", updated_At=" + updated_At +
                 '}';
