@@ -29,11 +29,9 @@ public class Beer {
     private String description;
     private String comments;
 
-    // one to one with recipe
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="RECIPE_ID")
     private Recipe recipe;
-
-
-
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(updatable = false)
@@ -168,7 +166,7 @@ public class Beer {
                 ", biterness=" + biterness +
                 ", description='" + description + '\'' +
                 ", comments='" + comments + '\'' +
-                ", recipe=" + recipe +
+                //", recipe=" + recipe +
                 ", created_At=" + created_At +
                 ", updated_At=" + updated_At +
                 '}';

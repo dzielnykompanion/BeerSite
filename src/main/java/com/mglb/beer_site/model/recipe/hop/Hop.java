@@ -1,7 +1,16 @@
 package com.mglb.beer_site.model.recipe.hop;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Hop {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private String name;
     private int amount;
     private int time;
@@ -9,14 +18,6 @@ public class Hop {
     private String comments;
 
     public Hop() {
-    }
-
-    public Hop(String name, int amount, int time, HopApplicationEnum application, String comments) {
-        this.name = name;
-        this.amount = amount;
-        this.time = time;
-        this.application = application;
-        this.comments = comments;
     }
 
     public String getName() {

@@ -11,6 +11,9 @@ public class Start {
 
     BeerRepo beerRepo;
 
+    public Start() {
+    }
+
     @Autowired
     public Start(BeerRepo beerRepo) {
         this.beerRepo = beerRepo;

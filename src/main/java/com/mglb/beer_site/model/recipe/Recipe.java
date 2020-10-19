@@ -1,16 +1,15 @@
 package com.mglb.beer_site.model.recipe;
 
+import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.model.recipe.addition.Addition;
 import com.mglb.beer_site.model.recipe.hop.Hop;
 import com.mglb.beer_site.model.recipe.malt.Malt;
 import com.mglb.beer_site.model.recipe.steps.Step;
 import com.mglb.beer_site.model.recipe.yeast.Yeast;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Recipe {
@@ -19,25 +18,28 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private ArrayList<Hop> hops;
-    private ArrayList<Malt> malts;
-    private ArrayList<Addition> additions;
-    private ArrayList<Step> steps;
+    @OneToMany(cascade = CascadeType.ALL)
+    @ElementCollection
+    private List<Hop> hops = new ArrayList();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @ElementCollection
+    private List<Malt> malts = new ArrayList();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="ADDITION_ID")
+    private List<Addition> additions;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @ElementCollection
+    private List<Step> steps = new ArrayList();
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Yeast yeast;
+
     private String comments;
 
-    // one to one with Beer
-
     public Recipe() {
-    }
-
-    public Recipe(ArrayList<Hop> hops, ArrayList<Malt> malts, ArrayList<Addition> additions, ArrayList<Step> steps, Yeast yeast, String comments) {
-        this.hops = hops;
-        this.malts = malts;
-        this.additions = additions;
-        this.steps = steps;
-        this.yeast = yeast;
-        this.comments = comments;
     }
 
     public Long getId() {
@@ -48,35 +50,35 @@ public class Recipe {
         Id = id;
     }
 
-    public ArrayList<Hop> getHops() {
+    public List<Hop> getHops() {
         return hops;
     }
 
-    public void setHops(ArrayList<Hop> hops) {
+    public void setHops(List<Hop> hops) {
         this.hops = hops;
     }
 
-    public ArrayList<Malt> getMalts() {
+    public List<Malt> getMalts() {
         return malts;
     }
 
-    public void setMalts(ArrayList<Malt> malts) {
+    public void setMalts(List<Malt> malts) {
         this.malts = malts;
     }
 
-    public ArrayList<Addition> getAdditions() {
+    public List<Addition> getAdditions() {
         return additions;
     }
 
-    public void setAdditions(ArrayList<Addition> additions) {
+    public void setAdditions(List<Addition> additions) {
         this.additions = additions;
     }
 
-    public ArrayList<Step> getSteps() {
+    public List<Step> getSteps() {
         return steps;
     }
 
-    public void setSteps(ArrayList<Step> steps) {
+    public void setSteps(List<Step> steps) {
         this.steps = steps;
     }
 
@@ -95,6 +97,7 @@ public class Recipe {
     public void setComments(String comments) {
         this.comments = comments;
     }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,16 @@
 package com.mglb.beer_site.model.recipe.malt;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Malt {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private String name;
     private int amount;
     private MaltTypeEnum type;
