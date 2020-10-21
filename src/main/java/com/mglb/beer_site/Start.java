@@ -24,7 +24,7 @@ public class Start {
         beer1.setComments("Bardzo dobre piwko");
 
         Beer beer2 = new Beer();
-        beer2.setName("GOLABEK APA");
+        beer2.setName("GOLABEK IPA");
         beer2.setMainStyle(BeerStyleEnum.ALE);
         beer2.setComments("Rownie dobre piwko, nawet lepsze");
 
