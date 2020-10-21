@@ -30,21 +30,16 @@ public class RecipeController {
 
 
     @PostMapping("/{beerID}")
-    public ResponseEntity<?> addRecipeToBeer(@PathVariable Long beerID, @Valid @RequestBody Recipe recipe, BindingResult result){
+    public ResponseEntity<?> updateRecipe(@PathVariable Long beerID, @Valid @RequestBody Recipe recipe, BindingResult result){
 
         ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
         if(errorMap != null) return errorMap;
 
         Beer beer = beerService.findById(beerID);
-        if (beer.getRecipe() != null) {
-            return new ResponseEntity<String>("beer already has recipe", HttpStatus.BAD_REQUEST);
-        }
-
         beer.setRecipe(recipe);
 
         recipeRepo.save(recipe);
         beerService.addOrUpdateBeer(beer);
-
 
         return new ResponseEntity<Beer>(beer, HttpStatus.CREATED);
     }

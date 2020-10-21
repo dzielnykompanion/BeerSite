@@ -3,14 +3,18 @@ package com.mglb.beer_site.service;
 import com.mglb.beer_site.exceptions.BeerIdException;
 import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.model.BeerStyleEnum;
+import com.mglb.beer_site.model.recipe.Recipe;
 import com.mglb.beer_site.repository.BeerRepo;
+import com.mglb.beer_site.repository.RecipeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class BeerService {
@@ -18,8 +22,21 @@ public class BeerService {
     @Autowired
     private BeerRepo beerRepo;
 
+    @Autowired
+    private RecipeRepo recipeRepo;
+
     public Beer addOrUpdateBeer(Beer beer){
 
+        // if beer with given ID doesn't exist
+        if (beer.getId() != null) {
+            Beer existingBeer = findById(beer.getId());
+            }
+        else {
+        // when we create beer we create also recipe
+            Recipe recipe = new Recipe();
+            beer.setRecipe(recipe);
+            recipeRepo.save(recipe);
+        }
         return beerRepo.save(beer);
     }
 
