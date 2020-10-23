@@ -20,5 +20,13 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(beerIdExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleRecipeIdException(RecipeIdException ex, WebRequest request){
+
+        RecipeIdExceptionResponse recipeIdExceptionResponse = new RecipeIdExceptionResponse(ex.getMessage());
+
+        return new ResponseEntity<>(recipeIdExceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
 
 }

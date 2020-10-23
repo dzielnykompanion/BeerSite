@@ -1,6 +1,7 @@
 package com.mglb.beer_site.service;
 
 import com.mglb.beer_site.exceptions.BeerIdException;
+import com.mglb.beer_site.exceptions.RecipeIdException;
 import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.model.BeerStyleEnum;
 import com.mglb.beer_site.model.recipe.Recipe;
@@ -26,17 +27,25 @@ public class BeerService {
     private RecipeRepo recipeRepo;
 
     public Beer addOrUpdateBeer(Beer beer){
-
+        // UPDATE BEER
         // if beer with given ID doesn't exist
         if (beer.getId() != null) {
             Beer existingBeer = findById(beer.getId());
+
+            // dont let save different recipe to our beer
+            if (!beer.getRecipe().getId().equals(existingBeer.getRecipe().getId())){
+                throw new RecipeIdException("Recipe with given ID doesn't belong to this beer.");
+                 }
             }
+
+        // SAVE BEER
         else {
-        // when we create beer we create also recipe
+        // when we create new beer we create also new recipe
             Recipe recipe = new Recipe();
             beer.setRecipe(recipe);
             recipeRepo.save(recipe);
         }
+
         return beerRepo.save(beer);
     }
 
@@ -61,22 +70,4 @@ public class BeerService {
         }
     }
 
-
-
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDb() {
-        Beer beer1 = new Beer();
-        beer1.setName("GOLABEK PILSNER");
-        beer1.setMainStyle(BeerStyleEnum.LAGER);
-        beer1.setComments("Bardzo dobre piwko");
-
-        Beer beer2 = new Beer();
-        beer2.setName("GOLABEK APA");
-        beer2.setMainStyle(BeerStyleEnum.ALE);
-        beer2.setComments("Ajajaj, ale dobre");
-
-        beerRepo.save(beer1);
-        beerRepo.save(beer2);
-    }
 }
