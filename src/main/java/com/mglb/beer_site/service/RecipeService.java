@@ -27,5 +27,10 @@ public class RecipeService {
         return recipe;
     }
 
+    public Recipe saveRecipe (Recipe recipe){
+        recipeRepo.save(recipe);
+        return recipe;
+    }
+
 
 }

@@ -24,19 +24,28 @@ public class BeerService {
     private BeerRepo beerRepo;
 
     @Autowired
-    private RecipeRepo recipeRepo;
+    private RecipeService recipeService;
 
     public Beer addOrUpdateBeer(Beer beer){
         // UPDATE BEER
-        // if beer with given ID doesn't exist
+        // if beer with given ID exist
         if (beer.getId() != null) {
             Beer existingBeer = findById(beer.getId());
 
             // dont let save different recipe to our beer
-            if (beer.getRecipe() != null &&
-                !beer.getRecipe().getId().equals(existingBeer.getRecipe().getId())){
+            if (    beer.getRecipe() != null &&
+                    beer.getRecipe().getId() != null &&
+                    !beer.getRecipe().getId().equals(existingBeer.getRecipe().getId())){
                 throw new RecipeIdException("Recipe with given ID doesn't belong to this beer.");
                  }
+
+            // if we pass JSON beer with already recipe inside, no matters with or without ID
+            if (beer.getRecipe() != null ) {
+                Recipe newRecipe = beer.getRecipe();
+                newRecipe.setId(existingBeer.getRecipe().getId());
+                recipeService.saveRecipe(newRecipe);
+                //existingBeer.setRecipe(newRecipe);
+                }
             }
 
         // SAVE BEER
@@ -44,7 +53,7 @@ public class BeerService {
         // when we create new beer we create also new recipe
             Recipe recipe = new Recipe();
             beer.setRecipe(recipe);
-            recipeRepo.save(recipe);
+            recipeService.saveRecipe(recipe);
         }
 
         return beerRepo.save(beer);
