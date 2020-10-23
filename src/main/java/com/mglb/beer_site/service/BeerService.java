@@ -33,7 +33,8 @@ public class BeerService {
             Beer existingBeer = findById(beer.getId());
 
             // dont let save different recipe to our beer
-            if (!beer.getRecipe().getId().equals(existingBeer.getRecipe().getId())){
+            if (beer.getRecipe() != null &&
+                !beer.getRecipe().getId().equals(existingBeer.getRecipe().getId())){
                 throw new RecipeIdException("Recipe with given ID doesn't belong to this beer.");
                  }
             }

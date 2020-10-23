@@ -5,6 +5,7 @@ import com.mglb.beer_site.model.recipe.Recipe;
 import com.mglb.beer_site.repository.RecipeRepo;
 import com.mglb.beer_site.service.BeerService;
 import com.mglb.beer_site.service.ErrorMapValidationService;
+import com.mglb.beer_site.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +18,15 @@ import javax.validation.Valid;
 @CrossOrigin
 public class RecipeController {
 
-    private BeerService beerService;
-    private RecipeRepo recipeRepo;
+    private RecipeService recipeService;
     private ErrorMapValidationService errorMapValidationService;
 
+
     @Autowired
-    public RecipeController(BeerService beerService, RecipeRepo recipeRepo, ErrorMapValidationService errorMapValidationService) {
-        this.beerService = beerService;
-        this.recipeRepo = recipeRepo;
+    public RecipeController(RecipeService recipeService, ErrorMapValidationService errorMapValidationService) {
+        this.recipeService = recipeService;
         this.errorMapValidationService = errorMapValidationService;
     }
-
 
     @PostMapping("/{beerID}")
     public ResponseEntity<?> updateRecipe(@PathVariable Long beerID, @Valid @RequestBody Recipe recipe, BindingResult result){
@@ -35,12 +34,8 @@ public class RecipeController {
         ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
         if(errorMap != null) return errorMap;
 
-        Beer beer = beerService.findById(beerID);
-        beer.setRecipe(recipe);
+        recipeService.updateRecipe(beerID, recipe);
 
-        recipeRepo.save(recipe);
-        beerService.addOrUpdateBeer(beer);
-
-        return new ResponseEntity<Beer>(beer, HttpStatus.CREATED);
+        return new ResponseEntity<Recipe>(recipe, HttpStatus.CREATED);
     }
 }
