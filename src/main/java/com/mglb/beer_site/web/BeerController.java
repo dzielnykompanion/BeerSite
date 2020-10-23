@@ -19,13 +19,11 @@ import java.util.List;
 public class BeerController {
 
 
-    private BeerRepo beerRepo;
     private BeerService beerService;
     private ErrorMapValidationService errorMapValidationService;
 
     @Autowired
-    public BeerController(BeerRepo beerRepo, BeerService beerService, ErrorMapValidationService errorMapValidationService) {
-        this.beerRepo = beerRepo;
+    public BeerController(BeerService beerService, ErrorMapValidationService errorMapValidationService) {
         this.beerService = beerService;
         this.errorMapValidationService = errorMapValidationService;
     }

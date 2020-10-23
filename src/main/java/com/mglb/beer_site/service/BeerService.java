@@ -20,11 +20,14 @@ import java.util.List;
 @Service
 public class BeerService {
 
-    @Autowired
     private BeerRepo beerRepo;
+    private RecipeService recipeService;
 
     @Autowired
-    private RecipeService recipeService;
+    public BeerService(BeerRepo beerRepo, RecipeService recipeService) {
+        this.beerRepo = beerRepo;
+        this.recipeService = recipeService;
+    }
 
     public Beer addOrUpdateBeer(Beer beer){
         // UPDATE BEER
@@ -44,16 +47,25 @@ public class BeerService {
                 Recipe newRecipe = beer.getRecipe();
                 newRecipe.setId(existingBeer.getRecipe().getId());
                 recipeService.saveRecipe(newRecipe);
-                //existingBeer.setRecipe(newRecipe);
                 }
             }
 
         // SAVE BEER
         else {
-        // when we create new beer we create also new recipe
-            Recipe recipe = new Recipe();
-            beer.setRecipe(recipe);
-            recipeService.saveRecipe(recipe);
+            // when we create new beer without recipe, create new recipe
+            if (beer.getRecipe() == null) {
+                Recipe recipe = new Recipe();
+                beer.setRecipe(recipe);
+                recipeService.saveRecipe(recipe);
+            }
+            // when we create beer with recipe
+            else {
+                Recipe recipe2 = beer.getRecipe();
+                // in that case create recipe with new ID
+                recipe2.setId(null);
+                beer.setRecipe(recipe2);
+                recipeService.saveRecipe(recipe2);
+            }
         }
 
         return beerRepo.save(beer);

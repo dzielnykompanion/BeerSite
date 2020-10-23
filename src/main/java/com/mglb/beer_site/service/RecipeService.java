@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class RecipeService {
 
-    @Autowired
     BeerService beerService;
+    RecipeRepo recipeRepo;
 
     @Autowired
-    RecipeRepo recipeRepo;
+    public RecipeService(BeerService beerService, RecipeRepo recipeRepo) {
+        this.beerService = beerService;
+        this.recipeRepo = recipeRepo;
+    }
 
     public Recipe updateRecipe (Long beerID, Recipe recipe) {
 
