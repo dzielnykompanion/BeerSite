@@ -28,22 +28,24 @@ public class RecipeController {
         this.errorMapValidationService = errorMapValidationService;
     }
 
-    @PostMapping("/{beerID}")
+    @PostMapping("{beerID}")
     public ResponseEntity<?> updateRecipe(@PathVariable Long beerID, @Valid @RequestBody Recipe recipe, BindingResult result){
-
         ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
         if(errorMap != null) return errorMap;
-
         recipeService.updateRecipe(beerID, recipe);
-
         return new ResponseEntity<Recipe>(recipe, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{beerID}/recipe")
+    @PostMapping("/recipe/{beerID}")
     public ResponseEntity<?> resetRecipe (@PathVariable Long beerID) {
-
         recipeService.resetRecipe(beerID);
-
         return new ResponseEntity<String>("Recipe reseted", HttpStatus.OK);
     }
+
+    @GetMapping("/recipe/{beerID}")
+    public ResponseEntity<?> getRecipe (@PathVariable Long beerID){
+        Recipe recipe = recipeService.getRecipe(beerID);
+        return new ResponseEntity<Recipe>(recipe, HttpStatus.OK);
+    }
+
 }

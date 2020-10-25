@@ -38,10 +38,14 @@ public class RecipeService {
     public void resetRecipe(Long beerID){
         Recipe newRecipe = new Recipe();
         Beer existingBeer = beerService.findById(beerID);
-
         newRecipe.setId(existingBeer.getRecipe().getId());
-
         saveRecipe(newRecipe);
+    }
+
+    // might need in future getRecipe
+    public Recipe getRecipe(Long beerID){
+        Recipe recipe = beerService.findById(beerID).getRecipe();
+        return recipe;
     }
 
 
