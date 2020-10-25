@@ -20,14 +20,10 @@ import java.util.List;
 @Service
 public class BeerService {
 
-    private BeerRepo beerRepo;
-    private RecipeService recipeService;
-
     @Autowired
-    public BeerService(BeerRepo beerRepo, RecipeService recipeService) {
-        this.beerRepo = beerRepo;
-        this.recipeService = recipeService;
-    }
+    private BeerRepo beerRepo;
+    @Autowired
+    private RecipeService recipeService;
 
     public Beer addOrUpdateBeer(Beer beer){
         // UPDATE BEER
@@ -78,10 +74,10 @@ public class BeerService {
     public Beer findById(Long id){
         try {
             Beer beer = beerRepo.findById(id).get();
+            return beer;
         } catch (Exception ex){
             throw new BeerIdException("Beer with ID " + id + " doesn't exist!");
         }
-        return beerRepo.findById(id).get();
     }
 
     public void deleteBeer(Long id){

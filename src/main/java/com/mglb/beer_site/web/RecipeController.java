@@ -38,4 +38,12 @@ public class RecipeController {
 
         return new ResponseEntity<Recipe>(recipe, HttpStatus.CREATED);
     }
+
+    @PostMapping("/{beerID}/recipe")
+    public ResponseEntity<?> resetRecipe (@PathVariable Long beerID) {
+
+        recipeService.resetRecipe(beerID);
+
+        return new ResponseEntity<String>("Recipe reseted", HttpStatus.OK);
+    }
 }

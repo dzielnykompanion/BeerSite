@@ -1,5 +1,6 @@
 package com.mglb.beer_site.service;
 
+import com.mglb.beer_site.exceptions.BeerIdException;
 import com.mglb.beer_site.model.Beer;
 import com.mglb.beer_site.model.recipe.Recipe;
 import com.mglb.beer_site.repository.RecipeRepo;
@@ -25,14 +26,22 @@ public class RecipeService {
 
         recipe.setId(existingBeer.getRecipe().getId());
 
-        recipeRepo.save(recipe);
-
-        return recipe;
+        return recipeRepo.save(recipe);
     }
 
     public Recipe saveRecipe (Recipe recipe){
-        recipeRepo.save(recipe);
-        return recipe;
+
+        return recipeRepo.save(recipe);
+    }
+
+    // we dont want to delete Recipe, only to reset it
+    public void resetRecipe(Long beerID){
+        Recipe newRecipe = new Recipe();
+        Beer existingBeer = beerService.findById(beerID);
+
+        newRecipe.setId(existingBeer.getRecipe().getId());
+
+        saveRecipe(newRecipe);
     }
 
 
