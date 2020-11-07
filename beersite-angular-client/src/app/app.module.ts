@@ -6,6 +6,10 @@ import { CreateBeerComponent } from './create-beer/create-beer.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 
+import { BeerService } from './beer-service/beer.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +18,10 @@ import { BeerListComponent } from './beer-list/beer-list.component';
     BeerListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BeerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

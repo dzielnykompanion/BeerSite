@@ -1,1 +1,37 @@
-<p>beer-details works!</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Beer List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Detailed Style</th>
+          <th>Alcohol</th>
+          <th>Biterness</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let beer of beers | async">
+          <td>{{ beer.name }}</td>
+          <td>{{ beer.detailedStyle }}</td>
+          <td>{{ beer.alcohol }}</td>
+          <td>{{ beer.biterness }}</td>
+          <td>
+            <button (click)="deleteBeer(beer.id)" class="btn btn-danger">
+              Delete
+            </button>
+            <button
+              (click)="beerDetails(beer.id)"
+              class="btn btn-info"
+              style="margin-left: 10px"
+            >
+              Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
