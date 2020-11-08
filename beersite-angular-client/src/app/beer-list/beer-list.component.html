@@ -7,6 +7,7 @@
         <th scope="col">DETAILED STYLE</th>
         <th scope="col">ALCOHOL</th>
         <th scope="col">BITERNESS</th>
+        <th scope="col">OPTIONS</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,10 @@
             <td>{{beer.detailedStyle}}</td>
             <td>{{beer.alcohol}}</td>
             <td>{{beer.biterness}}</td>
+            <td>
+              <button (click)="beerDetails(beer.id)" class="btn btn-info" style="margin-right: 10px">Details</button>
+              <button (click)="deleteBeer(beer.id)" class="btn btn-danger">Delete</button>
+            </td>
           </tr>
     </tbody>
   </table>
