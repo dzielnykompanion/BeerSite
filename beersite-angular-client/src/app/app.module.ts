@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CreateBeerComponent } from './create-beer/create-beer.component';
@@ -16,12 +17,14 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     CreateBeerComponent,
     BeerDetailsComponent,
-    BeerListComponent
+    BeerListComponent,
+    CreateBeerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    FormsModule
   ],
   providers: [BeerService],
   bootstrap: [AppComponent]

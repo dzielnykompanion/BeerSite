@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Beer } from '../models/beer';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class BeerService {
   private baseUrl = 'http://localhost:8080';
+
+  formData: Beer;
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +19,7 @@ export class BeerService {
   }
 
   createBeer(beer: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, beer);
+    return this.http.post(`${this.baseUrl}/addBeer`, beer);
   }
 
   updateBeer(id: number, value: any): Observable<Object> {

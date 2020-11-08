@@ -1,1 +1,26 @@
-<p>create-beer works!</p>
+
+
+
+<div>
+    <form #beerForm="ngForm" (ngSubmit)="onSubmit(beerForm.value)">
+        <label for="name">BEER NAME: </label>
+        <input required type="text" name="name" ngModel placeholder="Enter your beer name">
+
+        <label for="mainStyle">MAIN STYLE: </label>
+        <select required type="text" name="mainStyle" ngModel>
+            <option>LAGER</option>
+            <option>PILS</option>
+        </select>
+        <button type="submit">CREATE</button>
+    </form>
+</div>
+
+<!--
+
+
+<label for="detailedStyle">DETAILED STYLE: </label>
+<input id="detailedStyle" type="text" name="detailedStyle" value="" #detailedStyle>
+-->
+
+
+
