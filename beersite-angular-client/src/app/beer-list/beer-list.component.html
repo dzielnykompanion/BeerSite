@@ -1,27 +1,33 @@
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">NAME</th>
-        <th scope="col">MAIN STYLE</th>
-        <th scope="col">DETAILED STYLE</th>
-        <th scope="col">ALCOHOL</th>
-        <th scope="col">BITERNESS</th>
-        <th scope="col">OPTIONS</th>
-      </tr>
-    </thead>
-    <tbody>
-          <tr *ngFor="let beer of listBeer">
-            <td>{{beer.id}}</td>
-            <td>{{beer.name}}</td>
-            <td>{{beer.mainStyle}}</td>
-            <td>{{beer.detailedStyle}}</td>
-            <td>{{beer.alcohol}}</td>
-            <td>{{beer.biterness}}</td>
-            <td>
-              <button (click)="reloadData()" class="btn btn-info" style="margin-right: 10px">Details</button>
-              <button (click)="deleteBeer(beer.id)" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-    </tbody>
+<div *ngIf="listBeer.length == 0; else elseBlock" class="alert alert-info" role="alert">
+  There are no beer recipes! Create one.
+</div>
+
+<ng-template #elseBlock>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">MAIN STYLE</th>
+          <th scope="col">DETAILED STYLE</th>
+          <th scope="col">ALCOHOL</th>
+          <th scope="col">BITERNESS</th>
+          <th scope="col">OPTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let beer of listBeer">
+              <td>{{beer.id}}</td>
+              <td>{{beer.name}}</td>
+              <td>{{beer.mainStyle}}</td>
+              <td>{{beer.detailedStyle}}</td>
+              <td>{{beer.alcohol}}</td>
+              <td>{{beer.biterness}}</td>
+              <td>
+                <button (click)="beerDetails(beer.id)" class="btn btn-info" style="margin-right: 10px">Details</button>
+                <button (click)="deleteBeer(beer.id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+      </tbody>
   </table>
+</ng-template>
