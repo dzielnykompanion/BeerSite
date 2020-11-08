@@ -13,18 +13,27 @@ import { Observable } from 'rxjs';
 export class BeerListComponent implements OnInit {
   beers: Observable<Beer[]>;
 
-  constructor(private beerService: BeerService, private router: Router) {}
+  constructor(private _beerService: BeerService, private router: Router) {}
+
+  listBeer: Beer[];
 
   ngOnInit() {
-    this.reloadData();
+    this._beerService.getBeerList()
+    .subscribe
+    (
+      data =>
+      {
+        this.listBeer = data;
+      }
+    )
   }
 
   reloadData() {
-    this.beers = this.beerService.getBeerList();
+    this.beers = this._beerService.getBeerList();
   }
 
   deleteBeer(id: number) {
-    this.beerService.deleteBeer(id).subscribe(
+    this._beerService.deleteBeer(id).subscribe(
       (data) => {
         console.log(data);
         this.reloadData();

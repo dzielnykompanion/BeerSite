@@ -1,1 +1,22 @@
-<p>beer-list works!</p>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">MAIN STYLE</th>
+        <th scope="col">DETAILED STYLE</th>
+        <th scope="col">ALCOHOL</th>
+        <th scope="col">BITERNESS</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr *ngFor="let beer of listBeer">
+            <td>{{beer.id}}</td>
+            <td>{{beer.name}}</td>
+            <td>{{beer.mainStyle}}</td>
+            <td>{{beer.detailedStyle}}</td>
+            <td>{{beer.alcohol}}</td>
+            <td>{{beer.biterness}}</td>
+          </tr>
+    </tbody>
+  </table>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Beer } from '../models/beer';
+import { BeerService } from '../beer-service/beer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-beer-details',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _beerService: BeerService, private router: Router) {}
 
-  ngOnInit(): void {
+  beer: Beer;
+
+  ngOnInit(){
+    this._beerService.getBeerList()
+    .subscribe
+    (
+      data =>
+      {
+        this.beer = data;
+      }
+    )
   }
-
 }

@@ -1,3 +1,5 @@
+<h1>ee</h1>
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Beer List</h2>
@@ -13,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let beer of beers | async">
+        <tr *ngFor="let beer of beer | async">
           <td>{{ beer.name }}</td>
           <td>{{ beer.detailedStyle }}</td>
           <td>{{ beer.alcohol }}</td>
