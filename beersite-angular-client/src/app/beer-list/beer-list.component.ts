@@ -18,6 +18,10 @@ export class BeerListComponent implements OnInit {
   listBeer: Beer[];
 
   ngOnInit() {
+  this.reloadData()
+  }
+
+  reloadData() {
     this._beerService.getBeerList()
     .subscribe
     (
@@ -26,10 +30,6 @@ export class BeerListComponent implements OnInit {
         this.listBeer = data;
       }
     )
-  }
-
-  reloadData() {
-    this.beers = this._beerService.getBeerList();
   }
 
   deleteBeer(id: number) {
