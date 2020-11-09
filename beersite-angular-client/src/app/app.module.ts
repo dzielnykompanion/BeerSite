@@ -11,6 +11,11 @@ import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerService } from './beer-service/beer.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,15 +23,20 @@ import { HttpClientModule } from '@angular/common/http';
     CreateBeerComponent,
     BeerDetailsComponent,
     BeerListComponent,
-    CreateBeerComponent
+    CreateBeerComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [BeerService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateBeerComponent],
 })
 export class AppModule { }

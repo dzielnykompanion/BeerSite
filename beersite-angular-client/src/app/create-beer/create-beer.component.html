@@ -1,26 +1,31 @@
-
-
-
-<div>
-    <form #beerForm="ngForm" (ngSubmit)="onSubmit(beerForm.value)">
-        <label for="name">BEER NAME: </label>
-        <input required type="text" name="name" ngModel placeholder="Enter your beer name">
-
-        <label for="mainStyle">MAIN STYLE: </label>
-        <select required type="text" name="mainStyle" ngModel>
-            <option>LAGER</option>
-            <option>PILS</option>
-        </select>
-        <button type="submit">CREATE</button>
-    </form>
+<h1 mat-dialog-title>CREATE BEER</h1>
+<div mat-dialog-content>
+        <form #beerForm="ngForm" (ngSubmit)="onSubmit(beerForm.value)">
+            <label for="name">BEER NAME: </label>
+            <input required type="text" name="name" ngModel>
+    
+            <label for="mainStyle">MAIN STYLE: </label>
+            <select required type="text" name="mainStyle" ngModel>
+                <option>ALE</option>
+                <option>LAGER</option>
+            </select>
+    
+            <label for="detailedStyle">DETAILED STYLE: </label>
+            <input type="text" name="detailedStyle" ngModel>
+    
+            <label for="alcohol">ALCOHOL: </label>
+            <input type="number" name="alcohol" min="0" max="16"  ngModel>
+    
+            <label for="biterness">IBU: </label>
+            <input type="number" name="biterness" min="0" max="140" ngModel> 
+    
+            <label for="description">DESCRIPTION: </label>
+            <input type="text" name="description" ngModel>
+            <br>
+            <button type="submit">CREATE</button>
+        </form>
 </div>
+<div mat-dialog-actions>
 
-<!--
-
-
-<label for="detailedStyle">DETAILED STYLE: </label>
-<input id="detailedStyle" type="text" name="detailedStyle" value="" #detailedStyle>
--->
-
-
-
+  <button mat-button mat-dialog-close>CLOSE</button>
+</div>
