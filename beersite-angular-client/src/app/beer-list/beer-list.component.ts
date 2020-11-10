@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {CreateBeerComponent} from '../create-beer/create-beer.component';
+import {DeleteBeerModalComponent} from '../popout-modals/delete-beer-modal/delete-beer-modal.component';
+
 
 @Component({
   selector: 'app-beer-list',
@@ -37,16 +39,6 @@ export class BeerListComponent implements OnInit {
     )
   }
 
-  deleteBeer(id: number) {
-    this._beerService.deleteBeer(id).subscribe(
-      (data) => {
-        console.log(data);
-        this.reloadData();
-      },
-      (error) => console.log(error)
-    );
-  }
-
   beerDetails(id: number) {
     this._router.navigate(['details', id]);
   }
@@ -58,5 +50,11 @@ export class BeerListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width="70%";
     this._dialog.open(CreateBeerComponent, dialogConfig);
+  }
+
+  deleteBeerDialog(id: number){
+    this._dialog.open(DeleteBeerModalComponent,
+                     { data: {id: id} }
+    );
   }
 }

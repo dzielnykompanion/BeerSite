@@ -1,0 +1,15 @@
+<div class="modal-header">
+<h4>Beer deletion</h4>
+</div>
+<div mat-dialog-content>
+    <div class="modal-body">
+  <strong>Are you sure you want to delete this beer?</strong><br>
+  <span class="text-danger">This operation can not be undone.</span>
+  
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-secondary" mat-dialog-close>Cancel</button>
+      <button class="btn btn-danger" (click)="deleteBeer()">Ok</button>
+    </div>
+    
+</div>

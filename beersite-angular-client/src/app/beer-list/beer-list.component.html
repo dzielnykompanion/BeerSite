@@ -30,7 +30,8 @@
               <td>{{beer.biterness}}</td>
               <td>
                 <button (click)="beerDetails(beer.id)" class="btn btn-info" style="margin-right: 10px">Details</button>
-                <button (click)="deleteBeer(beer.id)" class="btn btn-danger">Delete</button>
+                <button (click)="deleteBeerDialog(beer.id)" class="btn btn-danger"><div>Delete</div></button>
+                <!-- <button (click)="deleteBeer(beer.id)" class="btn btn-danger">Delete</button> -->
               </td>
             </tr>
       </tbody>
