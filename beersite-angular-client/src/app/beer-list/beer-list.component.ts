@@ -4,6 +4,8 @@ import { BeerService } from '../beer-service/beer.service';
 import { Beer } from '../models/beer';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
+import {CreateBeerComponent} from '../create-beer/create-beer.component';
 
 @Component({
   selector: 'app-beer-list',
@@ -13,7 +15,10 @@ import { Observable } from 'rxjs';
 export class BeerListComponent implements OnInit {
   beers: Observable<Beer[]>;
 
-  constructor(private _beerService: BeerService, private router: Router) {}
+  constructor(private _beerService: BeerService,
+              private _router: Router,
+              private _dialog:MatDialog
+              ) {}
 
   listBeer: Beer[];
 
@@ -43,6 +48,15 @@ export class BeerListComponent implements OnInit {
   }
 
   beerDetails(id: number) {
-    this.router.navigate(['details', id]);
+    this._router.navigate(['details', id]);
+  }
+
+
+  openDialog(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width="70%";
+    this._dialog.open(CreateBeerComponent, dialogConfig);
   }
 }
