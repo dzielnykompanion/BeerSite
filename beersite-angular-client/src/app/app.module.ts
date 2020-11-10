@@ -15,6 +15,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BeerDetailsComponent,
     BeerListComponent,
     CreateBeerComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
