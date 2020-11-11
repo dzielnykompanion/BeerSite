@@ -44,20 +44,6 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(@NotBlank(message = "Name of your beer cannot be blank") @Size(max = 50, message = "Please use max 50 characters") String name, @NotNull BeerStyleEnum mainStyle, String detailedStyle, int batchVolume, double alcohol, int biterness, Recipe recipe, String description, String comments, Date created_At, Date updated_At) {
-        this.name = name;
-        this.mainStyle = mainStyle;
-        this.detailedStyle = detailedStyle;
-        this.batchVolume = batchVolume;
-        this.alcohol = alcohol;
-        this.biterness = biterness;
-        this.recipe = recipe;
-        this.description = description;
-        this.comments = comments;
-        this.created_At = created_At;
-        this.updated_At = updated_At;
-    }
-
     public Long getId() {
         return id;
     }

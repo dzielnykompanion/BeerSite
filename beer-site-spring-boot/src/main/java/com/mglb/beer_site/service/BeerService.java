@@ -22,6 +22,7 @@ public class BeerService {
 
     @Autowired
     private BeerRepo beerRepo;
+
     @Autowired
     private RecipeService recipeService;
 
@@ -87,5 +88,6 @@ public class BeerService {
             throw new BeerIdException("Beer with ID " + id + " doesn't exist!");
         }
     }
+
 
 }
