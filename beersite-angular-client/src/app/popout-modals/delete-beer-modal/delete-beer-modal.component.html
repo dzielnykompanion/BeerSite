@@ -8,8 +8,8 @@
   
     </div>
     <div class="modal-footer">
-      <button class="btn btn-outline-secondary" mat-dialog-close>Cancel</button>
-      <button class="btn btn-danger" (click)="deleteBeer()">Ok</button>
+      <button class="btn btn-outline-secondary" [mat-dialog-close] = "false">Cancel</button>
+      <button class="btn btn-danger" [mat-dialog-close] = "true">Confirm</button>
     </div>
     
 </div>

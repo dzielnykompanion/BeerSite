@@ -1,6 +1,7 @@
 import { BeerService } from '../../beer-service/beer.service';
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { _DisposeViewRepeaterStrategy } from '@angular/cdk/collections';
 
 
 @Component({
@@ -11,25 +12,25 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class DeleteBeerModalComponent implements OnInit {
 
-
   constructor(
     private _beerService: BeerService,
-    // public dialogRef: MatDialogRef<AdSettingsComponent>,
-    @Inject(MAT_DIALOG_DATA) public id: any
+    private _matDialogRef: MatDialogRef<DeleteBeerModalComponent>,
+    @Inject(MAT_DIALOG_DATA) private _id:number
   ) { }
 
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   deleteBeer() {
-    console.log(this.id);
-    // this._beerService.deleteBeer(this.id).subscribe(
-    //   (data) => {
-    //     console.log(data);
-    //   },
-    //   (error) => console.log(error)
-    // );
+    this._beerService.deleteBeer(this._id).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => console.log(error)
+    );
   }
 
+  closeDialog(){
+    this._matDialogRef.close();
+  }
 }

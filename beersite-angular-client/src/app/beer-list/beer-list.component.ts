@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {CreateBeerComponent} from '../create-beer/create-beer.component';
 import {DeleteBeerModalComponent} from '../popout-modals/delete-beer-modal/delete-beer-modal.component';
-
+import {DialogService} from '../dialog-service/dialog.service.service'
 
 @Component({
   selector: 'app-beer-list',
@@ -19,14 +19,17 @@ export class BeerListComponent implements OnInit {
 
   constructor(private _beerService: BeerService,
               private _router: Router,
-              private _dialog:MatDialog
+              private _dialog:MatDialog,
+              private _dialogService: DialogService
               ) {}
 
   listBeer: Beer[];
 
+
   ngOnInit() {
   this.reloadData()
   }
+
 
   reloadData() {
     this._beerService.getBeerList()
@@ -39,10 +42,11 @@ export class BeerListComponent implements OnInit {
     )
   }
 
+
   beerDetails(id: number) {
     this._router.navigate(['details', id]);
-  }
-
+    }
+  
 
   openDialog(){
     const dialogConfig = new MatDialogConfig();
@@ -52,9 +56,19 @@ export class BeerListComponent implements OnInit {
     this._dialog.open(CreateBeerComponent, dialogConfig);
   }
 
+
   deleteBeerDialog(id: number){
-    this._dialog.open(DeleteBeerModalComponent,
-                     { data: {id: id} }
-    );
+    this._dialogService.openConfirmDialog()
+        .afterClosed().subscribe(response =>{
+          if(response){
+            this._beerService.deleteBeer(id).subscribe(
+              (data) => {
+                console.log(data);
+                this.reloadData()
+              },
+              (error) => console.log(error)
+            );
+          }
+        });
   }
 }
