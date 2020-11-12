@@ -38,6 +38,8 @@
       <label for="alcohol">Alcohol: </label>
       <input type="number" #alcohol="ngModel" class="form-control"
       min="0" max="16"
+      customMin="0" customMax="16"
+      [class.is-invalid]="alcohol.invalid && alcohol.touched"
       name="alcohol" ngModel>
     </div>
 
@@ -45,6 +47,8 @@
       <label for="biterness">IBU: </label>
       <input type="number" #biterness="ngModel" class="form-control"
       min="0" max="140"
+      customMin="0" customMax="140"
+      [class.is-invalid]="biterness.invalid && biterness.touched"
       name="biterness" ngModel>
     </div>
   </div>
