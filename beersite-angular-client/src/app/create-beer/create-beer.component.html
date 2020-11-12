@@ -11,7 +11,11 @@
       required minlength="3" maxlength="50"
       [class.is-invalid]="name.invalid && name.touched"
       name="name" ngModel>
-    </div>
+        <div *ngIf="name.errors && name.touched">
+          <small class="text-danger" *ngIf="name.errors.required">Beer name is required.</small>
+          <small class="text-danger" *ngIf="name.errors.minlength">Beer name must be min 3 characters long.</small>
+       </div>
+  </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -23,6 +27,9 @@
         <option selected value="0">LAGER</option>
         <option value="1">ALE</option>
       </select>
+          <div *ngIf="mainStyle.errors && mainStyle.touched">
+            <small class="text-danger" *ngIf="mainStyle.errors.required">Main style is required.</small>
+          </div>
     </div>
 
     <div class="form-group col-md-6">
@@ -37,10 +44,14 @@
     <div class="form-group col-md-6">
       <label for="alcohol">Alcohol: </label>
       <input type="number" #alcohol="ngModel" class="form-control"
-      min="0" max="16"
-      customMin="0" customMax="16"
+      min="0" max="100"
+      customMin="0" customMax="100"
       [class.is-invalid]="alcohol.invalid && alcohol.touched"
       name="alcohol" ngModel>
+          <div *ngIf="alcohol.errors && alcohol.touched">
+            <small class="text-danger" *ngIf="alcohol.errors.customMin">Cannot be negative.</small>
+            <small class="text-danger" *ngIf="alcohol.errors.customMax">Cannot be greater than 100%.</small>
+          </div>
     </div>
 
     <div class="form-group col-md-6">
@@ -50,6 +61,10 @@
       customMin="0" customMax="140"
       [class.is-invalid]="biterness.invalid && biterness.touched"
       name="biterness" ngModel>
+          <div *ngIf="biterness.errors && biterness.touched">
+            <small class="text-danger" *ngIf="biterness.errors.customMin">Cannot be negative.</small>
+            <small class="text-danger" *ngIf="biterness.errors.customMax">Cannot be greater than 140.</small>
+          </div>
     </div>
   </div>
 
