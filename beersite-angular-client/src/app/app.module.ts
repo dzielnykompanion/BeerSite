@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DeleteBeerModalComponent } from './popout-modals/delete-beer-modal/delete-beer-modal.component';
+import { CustomMinDirective } from './shared/directives/custom-min-directive';
+import { CustomMaxDirective } from './shared/directives/custom-max-directive';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { DeleteBeerModalComponent } from './popout-modals/delete-beer-modal/dele
     CreateBeerComponent,
     NavBarComponent,
     DeleteBeerModalComponent,
+    CustomMinDirective,
+    CustomMaxDirective,
   ],
   imports: [
     BrowserModule,

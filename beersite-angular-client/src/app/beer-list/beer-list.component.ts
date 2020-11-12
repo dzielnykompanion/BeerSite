@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BeerDetailsComponent } from '../beer-details/beer-details.component';
 import { BeerService } from '../beer-service/beer.service';
 import { Beer } from '../models/beer';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {CreateBeerComponent} from '../create-beer/create-beer.component';
-import {DeleteBeerModalComponent} from '../popout-modals/delete-beer-modal/delete-beer-modal.component';
 import {DialogService} from '../dialog-service/dialog.service.service'
 
 @Component({
@@ -57,8 +55,6 @@ export class BeerListComponent implements OnInit {
     this._dialog.open(CreateBeerComponent, dialogConfig);
   }
 
-
-
   createBeerDialog(){
     this._dialogService.openCreateDialog()
         .afterClosed().subscribe(response =>{
@@ -68,7 +64,6 @@ export class BeerListComponent implements OnInit {
               (error) => console.log(error)
             });
           }
-
 
 
   deleteBeerDialog(id: number){
