@@ -14,6 +14,7 @@ import {DialogService} from '../dialog-service/dialog.service.service'
   templateUrl: './beer-list.component.html',
   styleUrls: ['./beer-list.component.css'],
 })
+
 export class BeerListComponent implements OnInit {
   beers: Observable<Beer[]>;
 
@@ -55,6 +56,19 @@ export class BeerListComponent implements OnInit {
     dialogConfig.width="70%";
     this._dialog.open(CreateBeerComponent, dialogConfig);
   }
+
+
+
+  createBeerDialog(){
+    this._dialogService.openCreateDialog()
+        .afterClosed().subscribe(response =>{
+          if(response){
+                this.reloadData()
+              }
+              (error) => console.log(error)
+            });
+          }
+
 
 
   deleteBeerDialog(id: number){

@@ -1,7 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { BeerService } from '../beer-service/beer.service';
 import { Beer } from '../models/beer';
+import {MatDialogRef} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 
 
@@ -12,7 +14,10 @@ import { Router } from '@angular/router';
 })
 export class CreateBeerComponent implements OnInit {
 
-  constructor(private _beerService: BeerService, private router:Router) { }
+  constructor(private _beerService: BeerService, 
+              private _matDialogRef: MatDialogRef<CreateBeerComponent>,
+              private _formsModule: FormsModule,
+              private router:Router) { }
 
 
 
@@ -27,6 +32,5 @@ export class CreateBeerComponent implements OnInit {
         (error) => console.log(error)
       );
     }
-
 
 }

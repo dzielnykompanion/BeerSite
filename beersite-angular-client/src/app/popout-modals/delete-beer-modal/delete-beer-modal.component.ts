@@ -13,21 +13,10 @@ import { _DisposeViewRepeaterStrategy } from '@angular/cdk/collections';
 export class DeleteBeerModalComponent implements OnInit {
 
   constructor(
-    private _beerService: BeerService,
     private _matDialogRef: MatDialogRef<DeleteBeerModalComponent>,
-    @Inject(MAT_DIALOG_DATA) private _id:number
   ) { }
 
   ngOnInit() {
-  }
-
-  deleteBeer() {
-    this._beerService.deleteBeer(this._id).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => console.log(error)
-    );
   }
 
   closeDialog(){

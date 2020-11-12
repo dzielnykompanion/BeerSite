@@ -1,30 +1,44 @@
-<h1 mat-dialog-title>CREATE BEER</h1>
+<div class="modal-header">
+  <h4>Add new beer</h4>
+  </div>
+
 <div mat-dialog-content>
-        <form #beerForm="ngForm" (ngSubmit)="onSubmit(beerForm.value)">
-            <label for="name">BEER NAME: </label>
-            <input required type="text" name="name" ngModel>
-    
-            <label for="mainStyle">MAIN STYLE: </label>
-            <select required type="text" name="mainStyle" ngModel>
-                <option>ALE</option>
-                <option>LAGER</option>
-            </select>
-    
-            <label for="detailedStyle">DETAILED STYLE: </label>
-            <input type="text" name="detailedStyle" ngModel>
-    
-            <label for="alcohol">ALCOHOL: </label>
-            <input type="number" name="alcohol" min="0" max="16"  ngModel>
-    
-            <label for="biterness">IBU: </label>
-            <input type="number" name="biterness" min="0" max="140" ngModel> 
-    
-            <label for="description">DESCRIPTION: </label>
-            <input type="text" name="description" ngModel>
-            <br>
-            <button type="submit">CREATE</button>
-        </form>
+  <form #beerForm="ngForm" (ngSubmit)="onSubmit(beerForm.value)">
+    <div class="form-group">
+        <label for="name">Beer name: </label>
+        <input required type="text" class="form-control" name="name" ngModel>
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="mainStyle">Main style:</label>
+      <select required type="text" name="mainStyle" class="custom-select mr-sm-2" ngModel>
+        <option selected value="0">LAGER</option>
+        <option value="1">ALE</option>
+      </select>
+    </div>
+      <div class="form-group col-md-6">
+        <label for="detailedStyle">Detailed style: </label>
+        <input type="text" class="form-control" name="detailedStyle"  ngModel>
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="alcohol">Alcohol: </label>
+      <input type="number" class="form-control" name="alcohol" min="0" max="16" ngModel>
+    </div>
+      <div class="form-group col-md-6">
+        <label for="biterness">IBU: </label>
+        <input type="number" class="form-control" name="biterness" min="0" max="140" ngModel> 
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Comments: </label>
+    <input type="text" class="form-control" name="comments" rows="3" ngModel>
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>CLOSE</button>
+
+<div class="modal-footer">
+  <button class="btn btn-outline-secondary"  [mat-dialog-close] = "false">Cancel</button>
+  <button class="btn btn-primary" type="submit" [mat-dialog-close] = "true">Add beer</button>
+</div>
+</form>
 </div>
