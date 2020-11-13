@@ -10,8 +10,11 @@ export class CustomMinDirective implements Validator {
   customMin: number;
 
   validate(c: FormControl): {[key: string]: any} {
+    if (!c.value) {}
+    else {
     let v = c.value;
     return ( v < this.customMin)? {"customMin": true} : null;
+    }
 }
 
 }

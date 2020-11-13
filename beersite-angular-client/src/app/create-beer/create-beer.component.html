@@ -44,24 +44,22 @@
     <div class="form-group col-md-6">
       <label for="alcohol">Alcohol: </label>
       <input type="number" #alcohol="ngModel" class="form-control"
-      min="0" max="100"
       customMin="0" customMax="100"
-      [class.is-invalid]="alcohol.invalid && alcohol.touched"
+      [class.is-invalid]="alcohol.invalid && alcohol.dirty"
       name="alcohol" ngModel>
-          <div *ngIf="alcohol.errors && alcohol.touched">
+          <div *ngIf="alcohol.errors && alcohol.dirty">
             <small class="text-danger" *ngIf="alcohol.errors.customMin">Cannot be negative.</small>
-            <small class="text-danger" *ngIf="alcohol.errors.customMax">Cannot be greater than 100%.</small>
+            <small class="text-danger" *ngIf="alcohol.errors.customMax">Cannot be greater than 100.</small>
           </div>
     </div>
 
     <div class="form-group col-md-6">
       <label for="biterness">IBU: </label>
       <input type="number" #biterness="ngModel" class="form-control"
-      min="0" max="140"
       customMin="0" customMax="140"
-      [class.is-invalid]="biterness.invalid && biterness.touched"
+      [class.is-invalid]="biterness.invalid && biterness.dirty"
       name="biterness" ngModel>
-          <div *ngIf="biterness.errors && biterness.touched">
+          <div *ngIf="biterness.errors && biterness.dirty">
             <small class="text-danger" *ngIf="biterness.errors.customMin">Cannot be negative.</small>
             <small class="text-danger" *ngIf="biterness.errors.customMax">Cannot be greater than 140.</small>
           </div>
@@ -76,7 +74,10 @@
 
 <div class="modal-footer">
   <button class="btn btn-outline-secondary" [mat-dialog-close] = "false">Cancel</button>
-  <button class="btn btn-primary" type="submit" [mat-dialog-close] = "true">Add beer</button>
+  <button class="btn btn-primary" type="submit" 
+  [mat-dialog-close] = "true"
+  [disabled] = "beerForm.form.invalid">Add beer</button>
 </div>
 </form>
 </div>
+

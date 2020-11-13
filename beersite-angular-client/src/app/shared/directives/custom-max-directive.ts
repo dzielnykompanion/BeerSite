@@ -10,7 +10,10 @@ export class CustomMaxDirective implements Validator {
   customMax: number;
   
   validate(c: FormControl): {[key: string]: any} {
+      if (!c.value) {}
+      else{
       let v = c.value;
       return ( v > this.customMax)? {"customMax": true} : null;
+      }
   }
 } 
