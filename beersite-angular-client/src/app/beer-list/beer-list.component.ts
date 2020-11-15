@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {CreateBeerComponent} from '../create-beer/create-beer.component';
-import {DialogService} from '../dialog-service/dialog.service.service'
+import {DialogService} from '../dialog-service/dialog.service.service';
+import { MatPaginator } from '@angular/material/paginator'
+import { ViewChild } from '@angular/core'
 
 @Component({
   selector: 'app-beer-list',
@@ -13,8 +15,15 @@ import {DialogService} from '../dialog-service/dialog.service.service'
   styleUrls: ['./beer-list.component.css'],
 })
 
+
 export class BeerListComponent implements OnInit {
-  beers: Observable<Beer[]>;
+
+  public page = "1";
+  public pageSize = "10";
+  public beers: Observable<Beer[]>;
+  public listBeer: Beer[];
+
+  @ViewChild(MatPaginator) paginator : MatPaginator;
 
   constructor(private _beerService: BeerService,
               private _router: Router,
@@ -22,7 +31,7 @@ export class BeerListComponent implements OnInit {
               private _dialogService: DialogService
               ) {}
 
-  listBeer: Beer[];
+
 
 
   ngOnInit() {

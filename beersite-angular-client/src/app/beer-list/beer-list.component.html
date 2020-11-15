@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-            <tr *ngFor="let beer of listBeer">
+            <tr *ngFor="let beer of listBeer | slice: (page-1) * pageSize : page * pageSize">
               <td>{{beer.id}}</td>
               <td>{{beer.name}}</td>
               <td>{{beer.mainStyle}}</td>
@@ -35,5 +35,10 @@
             </tr>
       </tbody>
   </table>
+  <ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="listBeer?.length"></ngb-pagination>
 </ng-template>
+
 

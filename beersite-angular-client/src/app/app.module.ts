@@ -19,6 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DeleteBeerModalComponent } from './popout-modals/delete-beer-modal/delete-beer-modal.component';
 import { CustomMinDirective } from './shared/directives/custom-min-directive';
 import { CustomMaxDirective } from './shared/directives/custom-max-directive';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CustomMaxDirective } from './shared/directives/custom-max-directive';
     BrowserAnimationsModule,
     MatDialogModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    AppRoutingModule
   ],
   providers: [BeerService],
   bootstrap: [AppComponent],
