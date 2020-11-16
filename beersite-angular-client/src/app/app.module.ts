@@ -20,6 +20,7 @@ import { DeleteBeerModalComponent } from './popout-modals/delete-beer-modal/dele
 import { CustomMinDirective } from './shared/directives/custom-min-directive';
 import { CustomMaxDirective } from './shared/directives/custom-max-directive';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     DeleteBeerModalComponent,
     CustomMinDirective,
     CustomMaxDirective,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
