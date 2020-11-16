@@ -21,6 +21,8 @@ import { CustomMinDirective } from './shared/directives/custom-min-directive';
 import { CustomMaxDirective } from './shared/directives/custom-max-directive';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardCarouselComponent } from './dashboard/dashboard-carousel/dashboard-carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CustomMinDirective,
     CustomMaxDirective,
     DashboardComponent,
+    DashboardCarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [BeerService],
   bootstrap: [AppComponent],
