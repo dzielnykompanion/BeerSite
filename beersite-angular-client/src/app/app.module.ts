@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DeleteBeerModalComponent } from './popout-modals/delete-beer-modal/delete-beer-modal.component';
@@ -48,6 +49,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
+    MatDividerModule,
     AppRoutingModule,
     NgbModule
   ],
