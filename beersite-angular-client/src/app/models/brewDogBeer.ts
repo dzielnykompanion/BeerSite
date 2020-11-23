@@ -1,6 +1,4 @@
-declare module namespace {
-
-    export interface brewDogBeer {
+    export interface BrewDogBeer {
         id: number;
         name: string;
         tagline: string;
@@ -86,5 +84,3 @@ declare module namespace {
         hops: Hop[];
         yeast: string;
     }
-
-}

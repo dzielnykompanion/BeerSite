@@ -15,7 +15,6 @@ import { ViewChild } from '@angular/core'
   styleUrls: ['./beer-list.component.css'],
 })
 
-
 export class BeerListComponent implements OnInit {
 
   public page = "1";
@@ -31,13 +30,9 @@ export class BeerListComponent implements OnInit {
               private _dialogService: DialogService
               ) {}
 
-
-
-
   ngOnInit() {
   this.reloadData()
   }
-
 
   reloadData() {
     this._beerService.getBeerList()
@@ -50,12 +45,10 @@ export class BeerListComponent implements OnInit {
     )
   }
 
-
   beerDetails(id: number) {
     this._router.navigate(['details', id]);
     }
   
-
   openDialog(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -73,7 +66,6 @@ export class BeerListComponent implements OnInit {
               (error) => console.log(error)
             });
           }
-
 
   deleteBeerDialog(id: number){
     this._dialogService.openConfirmDialog()
