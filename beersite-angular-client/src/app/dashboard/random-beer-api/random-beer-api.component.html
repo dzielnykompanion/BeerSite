@@ -1,22 +1,52 @@
-<div class="container bg-light box" *ngFor="let randomBeer of randomBeer">
+<h4> BrewDog brewery beer of today:</h4><br>
+<div *ngFor="let randomBeer of randomBeer" class="container bg-light box">
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-5">BEER IMG</div>
+    <div class="col-4">
+        <img src="{{randomBeer.image_url}}" class="img" >
+    </div>
 
-    <div class="col-7">
-        <div class="row">{{randomBeer.name}}</div>
-        <div class="row">description</div>
-        <div class="row">
-            <ul>
-                <li>Malts</li>
-                <li>Hops</li>
-                <li>Yeasts</li>
+    <div class="col-8">
+        <div class="row"><h1><span class="text-primary">{{randomBeer.name}}</span></h1></div>
+        <div class="row"><b>{{randomBeer.tagline}}</b>  {{randomBeer.abv}}% / {{randomBeer.ibu}} IBU</div>
+        <br>
+
+        <div class="row"><b>Description:</b></div>
+        <div class="row">{{randomBeer.description}}</div>
+        <br>
+
+        <div class="row"><b>Malts:</b></div>
+        <div *ngFor="let malt of randomBeer.ingredients.malt">
+            <ul class="list">
+                <li>
+                {{malt.name}}
+                </li>
             </ul>
         </div>
-        <div class="row">food pairing</div>
-        <div class="row">brewer</div>
+
+        <div class="row"><b>Hops:</b></div>
+        <div *ngFor="let hop of randomBeer.ingredients.hops">
+        <ul class="list">
+            <li>
+            {{hop.name}} 
+            <span class="text-muted">({{hop.add}}/{{hop.attribute}})</span>
+            </li>
+        </ul>
+        </div>
+
+
+        <div class="row"><b>Yeasts:</b></div>
+        <div class="row">{{randomBeer.ingredients.yeast}}</div>
+        <br>
+
+        <div class="row"><b>Food pairing:</b></div>
+        <div class="row">{{randomBeer.food_pairing}}</div>
+        <br>
+
+        <div class="row"><b>Contributed by:</b></div>
+        <div class="row">{{randomBeer.contributed_by}}</div>
     
     </div>
-  </div>
+</div>
 </div>

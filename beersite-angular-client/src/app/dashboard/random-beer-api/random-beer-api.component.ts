@@ -19,6 +19,7 @@ export class RandomBeerApiComponent implements OnInit {
     this.getBeer().subscribe
     (data => { 
       this.randomBeer = data;
+      console.log(data);
     } )
   }
 

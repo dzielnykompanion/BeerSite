@@ -2,3 +2,19 @@
   box-shadow: 0 0 15px;
   padding: 2px;
 }
+
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 600px;
+  padding: 8px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  margin-left: 15px;
+  margin-right: 4;
+}
