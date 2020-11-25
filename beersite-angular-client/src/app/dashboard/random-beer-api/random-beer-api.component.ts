@@ -15,10 +15,14 @@ export class RandomBeerApiComponent implements OnInit {
   randomBeer: BrewDogBeer[]; // variable: <interface>
   baseUrl = 'https://api.punkapi.com/v2/beers/random';
 
+
+
   ngOnInit() {
     this.getBeer().subscribe
     (data => { 
       this.randomBeer = data;
+      if ( this.randomBeer[0].image_url == null)
+      { this.randomBeer[0].image_url = '/assets/no_photo.png' }
       console.log(data);
     } )
   }
