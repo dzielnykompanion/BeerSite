@@ -24,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardCarouselComponent } from './dashboard/dashboard-carousel/dashboard-carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RandomBeerApiComponent } from './dashboard/random-beer-api/random-beer-api.component';
+import { RandomBeerApiComponent } from './random-beer-api/random-beer-api.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 

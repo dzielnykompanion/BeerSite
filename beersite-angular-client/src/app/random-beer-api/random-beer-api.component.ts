@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BrewDogBeer } from '../../models/brewDogBeer';
+import { BrewDogBeer } from '../models/brewDogBeer';
 import { Observable } from "rxjs";
 
 @Component({
