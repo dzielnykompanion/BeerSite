@@ -18,7 +18,7 @@ import { ViewChild } from '@angular/core'
 export class BeerListComponent implements OnInit {
 
   public page = "1";
-  public pageSize = "10";
+  public pageSize = "5";
   public beers: Observable<Beer[]>;
   public listBeer: Beer[];
 
