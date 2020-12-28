@@ -1,12 +1,12 @@
-.footer {
-  background: rgba(0, 128, 0, 0.3);
-}
 .box {
   box-shadow: 0 0 15px;
   padding: 2px;
 }
 
 .bottomFooter {
-  background-color: green;
   opacity: 0.6;
+}
+
+.page-footer {
+  min-height: 100%;
 }
