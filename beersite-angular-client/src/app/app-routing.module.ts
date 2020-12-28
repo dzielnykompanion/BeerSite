@@ -7,7 +7,8 @@ import { RandomBeerApiComponent } from './random-beer-api/random-beer-api.compon
 import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  {path: '', redirectTo:'/home', pathMatch: 'full'},
+  { path: 'home', component: DashboardComponent },
   { path: 'list', component: BeerListComponent },
   { path: 'randomBeer', component: RandomBeerApiComponent},
   { path: 'contact', component: ContactComponent}
