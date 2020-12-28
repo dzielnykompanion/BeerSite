@@ -6,7 +6,7 @@
 }
 
 .contact-form form {
-  padding: 14%;
+  padding-top: 25px;
 }
 .contact-form form .row {
   margin-bottom: -7%;
@@ -25,8 +25,8 @@
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 .btnContactSubmit {
   width: 50%;
