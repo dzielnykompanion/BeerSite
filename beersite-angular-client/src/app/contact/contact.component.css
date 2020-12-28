@@ -1,0 +1,40 @@
+.contact-form {
+  margin-bottom: 5%;
+}
+.contact-form .form-control {
+  border-radius: 1rem;
+}
+
+.contact-form form {
+  padding: 14%;
+}
+.contact-form form .row {
+  margin-bottom: -7%;
+}
+.contact-form h4 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #0062cc;
+}
+.contact-form .btnContact {
+  width: 300px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 1rem;
+  padding: 1.5%;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.btnContactSubmit {
+  width: 50%;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1.5%;
+  color: #fff;
+  background-color: #0062cc;
+  border: none;
+  cursor: pointer;
+}
