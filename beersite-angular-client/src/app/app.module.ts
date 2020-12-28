@@ -26,6 +26,7 @@ import { DashboardCarouselComponent } from './dashboard/dashboard-carousel/dashb
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RandomBeerApiComponent } from './random-beer-api/random-beer-api.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     DashboardCarouselComponent,
     RandomBeerApiComponent,
     FooterComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
