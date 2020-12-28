@@ -12,6 +12,10 @@ export class DashboardCarouselComponent implements OnInit{
 
   ngOnInit(){}
 
-  images = [950, 999, 984].map((n) => `https://picsum.photos/id/${n}/1120/500`);
+  //images = [950, 999, 984].map((n) => `https://picsum.photos/id/${n}/1120/500`);
+  images: string[] = ['/assets/carousel1.jpg',
+                      '/assets/carousel2.jpg',
+                      '/assets/carousel3.jpg']
+
 }
 
