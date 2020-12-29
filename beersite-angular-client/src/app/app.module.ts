@@ -28,6 +28,9 @@ import { RandomBeerApiComponent } from './random-beer-api/random-beer-api.compon
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { MaterialDatabaseComponent } from './material-database/material-database.component';
+import { MaltComponent } from './material-database/malt/malt.component';
+import { HopComponent } from './material-database/hop/hop.component';
+import { YeastComponent } from './material-database/yeast/yeast.component';
 
 
 
@@ -48,6 +51,9 @@ import { MaterialDatabaseComponent } from './material-database/material-database
     FooterComponent,
     ContactComponent,
     MaterialDatabaseComponent,
+    MaltComponent,
+    HopComponent,
+    YeastComponent,
   ],
   imports: [
     BrowserModule,
