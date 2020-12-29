@@ -30,6 +30,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MaterialDatabaseComponent } from './material-database/material-database.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
