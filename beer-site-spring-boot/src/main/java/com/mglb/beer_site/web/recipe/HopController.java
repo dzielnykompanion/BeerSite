@@ -1,10 +1,12 @@
 package com.mglb.beer_site.web.recipe;
 
 import com.mglb.beer_site.model.recipe.hop.Hop;
+import com.mglb.beer_site.service.ErrorMapValidationService;
 import com.mglb.beer_site.service.HopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,15 @@ public class HopController {
     @Autowired
     private HopService hopService;
 
+    @Autowired
+    private ErrorMapValidationService errorMapValidationService;
+
     @PostMapping("/addHop")
-    public ResponseEntity<?> addOrUpdateHop (@RequestBody Hop hop) {
+    public ResponseEntity<?> addOrUpdateHop (@RequestBody Hop hop, BindingResult result) {
+
+        ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
+        if(errorMap != null) return errorMap;
+
         hopService.addOrUpdateHop(hop);
         return new ResponseEntity<Hop>(hop, HttpStatus.CREATED);
     }
