@@ -14,21 +14,35 @@ public class HopService {
     private HopRepo hopRepo;
 
     public Hop addOrUpdateHop (Hop hop) {
-        // TODO
-        return hop;
+        if ( hop.getId() != null )
+        {
+            Hop existingHop = findById(hop.getId());
+        }
+        return hopRepo.save(hop);
     }
+
 
     public List<Hop> getAll(){
         return hopRepo.findAll();
     }
 
     public Hop findById(Long id) {
-        // TODO
-        return null;
+        try {
+            Hop hop = hopRepo.findById(id).get();
+            return hop;
+        } catch (Exception ex) {
+            // TODO
+            throw new RuntimeException();
+        }
     }
 
     public void deleteHop(Long id) {
-        // TODO
+        try {
+            hopRepo.deleteById(id);
+        } catch (Exception Ex) {
+            // TODO
+            throw new RuntimeException();
+        }
     }
 
 }

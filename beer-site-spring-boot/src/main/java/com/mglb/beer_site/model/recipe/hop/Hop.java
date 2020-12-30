@@ -20,6 +20,14 @@ public class Hop {
     public Hop() {
     }
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
     public String getName() {
         return name;
     }
