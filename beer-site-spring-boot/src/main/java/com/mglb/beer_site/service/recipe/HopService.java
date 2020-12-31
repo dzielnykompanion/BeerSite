@@ -1,4 +1,4 @@
-package com.mglb.beer_site.service;
+package com.mglb.beer_site.service.recipe;
 
 import com.mglb.beer_site.exceptions.recipe.HopIdException;
 import com.mglb.beer_site.model.recipe.hop.Hop;

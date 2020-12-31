@@ -28,6 +28,14 @@ public class Yeast {
         this.comments = comments;
     }
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -67,4 +75,5 @@ public class Yeast {
     public void setComments(String comments) {
         this.comments = comments;
     }
+
 }

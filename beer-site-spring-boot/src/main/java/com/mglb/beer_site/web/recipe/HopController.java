@@ -2,7 +2,7 @@ package com.mglb.beer_site.web.recipe;
 
 import com.mglb.beer_site.model.recipe.hop.Hop;
 import com.mglb.beer_site.service.ErrorMapValidationService;
-import com.mglb.beer_site.service.HopService;
+import com.mglb.beer_site.service.recipe.HopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
