@@ -1,5 +1,6 @@
 package com.mglb.beer_site.service;
 
+import com.mglb.beer_site.exceptions.recipe.HopIdException;
 import com.mglb.beer_site.model.recipe.hop.Hop;
 import com.mglb.beer_site.repository.HopRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,7 @@ public class HopService {
             Hop hop = hopRepo.findById(id).get();
             return hop;
         } catch (Exception ex) {
-            // TODO
-            throw new RuntimeException();
+            throw new HopIdException("Hop with ID " + id + " doesn't exist");
         }
     }
 
@@ -40,8 +40,7 @@ public class HopService {
         try {
             hopRepo.deleteById(id);
         } catch (Exception Ex) {
-            // TODO
-            throw new RuntimeException();
+            throw new HopIdException("Hop with ID " + id + " doesn't exist");
         }
     }
 

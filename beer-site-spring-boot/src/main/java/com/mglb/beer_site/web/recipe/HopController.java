@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class HopController {
     private ErrorMapValidationService errorMapValidationService;
 
     @PostMapping("/addHop")
-    public ResponseEntity<?> addOrUpdateHop (@RequestBody Hop hop, BindingResult result) {
+    public ResponseEntity<?> addOrUpdateHop (@Valid @RequestBody Hop hop, BindingResult result) {
 
         ResponseEntity<?> errorMap = errorMapValidationService.errorMapValidationService(result);
         if(errorMap != null) return errorMap;

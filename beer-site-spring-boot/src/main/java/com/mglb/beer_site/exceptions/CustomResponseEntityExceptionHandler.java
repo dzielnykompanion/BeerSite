@@ -1,5 +1,7 @@
 package com.mglb.beer_site.exceptions;
 
+import com.mglb.beer_site.exceptions.recipe.HopIdException;
+import com.mglb.beer_site.exceptions.recipe.HopIdExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,18 +16,21 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     @ExceptionHandler
     public final ResponseEntity<Object> handleBeerIdException(BeerIdException ex, WebRequest request){
-
         BeerIdExceptionResponse beerIdExceptionResponse = new BeerIdExceptionResponse(ex.getMessage());
-
         return new ResponseEntity<>(beerIdExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     public final ResponseEntity<Object> handleRecipeIdException(RecipeIdException ex, WebRequest request){
-
         RecipeIdExceptionResponse recipeIdExceptionResponse = new RecipeIdExceptionResponse(ex.getMessage());
-
         return new ResponseEntity<>(recipeIdExceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleHopIdException(HopIdException ex, WebRequest request){
+        HopIdExceptionResponse hopIdExceptionResponse = new HopIdExceptionResponse(ex.getMessage());
+        return new ResponseEntity<>(hopIdExceptionResponse, HttpStatus.BAD_REQUEST);
+
     }
 
 
